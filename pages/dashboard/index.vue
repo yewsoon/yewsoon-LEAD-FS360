@@ -5,7 +5,7 @@
                 SALES STATISTICS
             </template>
             <template v-slot:content>
-                <div class="w-screen overflow-hidden p-2">
+                <div class="w-full overflow-hidden p-2">
                     <barChart :chart-data="revenueMonthly.barChartData"
         :options="revenueMonthly.barChartOptions" :height="120"></barChart>
                 </div>
