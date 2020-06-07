@@ -5,7 +5,7 @@
                 SALES STATISTICS
             </template>
             <template v-slot:content>
-                <div class="w-full overflow-hidden p-2">
+                <div class="w-screen overflow-hidden p-2">
                     <barChart :chart-data="revenueMonthly.barChartData"
         :options="revenueMonthly.barChartOptions" :height="120"></barChart>
                 </div>
@@ -14,9 +14,9 @@
     </div>
 </template>
 <script>
-        import ContentCard from "C:/users/ar_so/music/Full_Stack_360/Lead-360/yewsoon-LEAD-FS360/components/items/ContentCard.vue";
-        import BarChart from 'C:/users/ar_so/music/Full_Stack_360/Lead-360/yewsoon-LEAD-FS360/components/charts/BarChart';
-        import LineChart from 'C:/users/ar_so/music/Full_Stack_360/Lead-360/yewsoon-LEAD-FS360/components/charts/LineChart';
+        import ContentCard from "~/components/items/ContentCard.vue";
+        import BarChart from '~/components/charts/BarChart';
+        import LineChart from '~/components/charts/LineChart';
 
         const chartColors = {
             red: 'rgb(255, 99, 132)',
@@ -29,6 +29,13 @@
         };
 
         export default {
+            transition:{
+                name:"inventory",
+                mode:"out-in",
+                duration:{enter: 1000, leave: 500},
+                enterActiveClass: "animated fadeIn",
+                leaveActiveClass: "animated fadeOut"
+            },
             layout: "dashboard",
             components:{
                 ContentCard,
