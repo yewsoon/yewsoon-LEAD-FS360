@@ -4,7 +4,7 @@
             <menuLink :url="'/dashboard'" class="text-white bg-teal-600 hover:bg-teal-700">
                 <template v-slot:icon-word>
                     <div class="flex items-center justify-start text-lg overflow-x-hidden">
-                        <i class="far fa-bug ml-6 mr-4"></i>
+                        <i class="fas fa-frog ml-6 mr-4"></i>
                         <label class="ml-2 font-medium font-sans tracking-wide">
                             FROG
                         </label>
@@ -18,6 +18,9 @@
                     <i class="fas fa-bars"></i>
                 </template>    
             </naviButton>
+            <div class="flex items-center justify-center text-lg overflow-x-hidden">
+                <label class="ml-2 font-medium font-sans tracking-wide">FULL STACK</label>
+            </div>    
         </div>
     </div>
 </template>
