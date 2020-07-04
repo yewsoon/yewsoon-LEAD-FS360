@@ -158,7 +158,9 @@
                             active:outline-none
                             w-full
                             "
-                            type="button">
+                            type="button"
+                            @click="createProduct"
+                            >
                             New Product
                         </button>    
                     </div>
@@ -171,7 +173,7 @@
     import ContentCard from "~/components/items/ContentCard.vue";
     import InputElement from "~/components/items/Input.vue";
     import SelectElement from "~/components/items/Select.vue";
-    import { mapState, mapMutations } from 'vuex';
+    import { mapState, mapMutations, mapActions } from 'vuex';
 
     export default {
         layout:"dashboard",
@@ -206,6 +208,9 @@
                 setWeightBeforeRoast: 'product/setWeightBeforeRoast',
                 setWeightAfterRoast: 'product/setWeightAfterRoast',
                 setProfile: 'product/setProfile',
+            }),
+            ...mapActions({
+                createProduct: 'product/createProduct'
             }),
             waterLose () {
                 let wL = this.weightAfterRoast && this.weightBeforeRoast ? (1-(this.weightAfterRoast/this.weightBeforeRoast))*100 : 0.0
