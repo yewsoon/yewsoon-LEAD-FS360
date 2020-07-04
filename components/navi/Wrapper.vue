@@ -6,32 +6,36 @@
                     <div class="flex items-center justify-start text-lg overflow-x-hidden">
                         <i class="fas fa-frog ml-6 mr-4"></i>
                         <label class="ml-2 font-medium font-sans tracking-wide">
-                            FROG
+                            LEAD
                         </label>
                     </div>
                 </template>
             </menuLink>
 
             <naviButton 
+                :callback="toggleMenu"
                 class="hover:gb-gray-300 hover:text-gray-600 mx-1">
                 <template v-slot:button-icon>
                     <i class="fas fa-bars"></i>
                 </template>    
-            </naviButton>
-            <div class="flex items-center justify-center text-lg overflow-x-hidden">
-                <label class="ml-2 font-medium font-sans tracking-wide">FULL STACK</label>
-            </div>    
+            </naviButton>   
         </div>
     </div>
 </template>
 <script>
     import NaviButton from "~/components/items/NaviButton.vue";
     import MenuLink from "~/components/items/MenuLink.vue";
+    import { mapMutations } from 'vuex'
 
     export default {
         components:{
             NaviButton,
             MenuLink
+        },
+        methods:{
+            ...mapMutations({
+                toggleMenu: "dashboard/toggleMenu"
+            })
         }
     }
 </script>
