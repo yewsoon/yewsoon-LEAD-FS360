@@ -1,5 +1,3 @@
-import { state } from "./dashboard";
-
 const defaultState = () => {
         return {
             bean: '',
@@ -12,9 +10,12 @@ const defaultState = () => {
             selectedStock: {
                 price: 500,
                 purchasedStock: 15
-            }
+            },
+            existProduct: []
         }
 };
+
+export const state = () => defaultState();
 
 export const mutations = {
     resetStore: (state) => {
@@ -38,12 +39,19 @@ export const mutations = {
     setProfile: (state, profile) => {
         state.profile = profile
     },
-}
+    setExistProduct: (state, existProduct) => {
+        state.existProduct = existProduct['products']
+    }
+};
 
 export const actions = {
-    async createProduct ( {state, commit}){
-        await this.$apis.product.new(state)
+    async createProduct ({state, commit}, user){
+        await this.$apis.product.new(state, user.uid, user.idToken)
         commit("resetStore") //Reset the State
         this.$router.push("/products") //Move back to product page
+    },
+    async getProduct ({commit}){
+        await this.$apis.product.all()
+            .then(res => commit("setExistProduct", res))
     }
 }

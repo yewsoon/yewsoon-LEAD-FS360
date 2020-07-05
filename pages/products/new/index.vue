@@ -75,7 +75,7 @@
                             :inputType="'text'"
                             :model="bean"
                             @input="setBean($event)"
-                            :disabled="flase"
+                            :disabled="false"
                             />
                         <i class="fas fa-globe-asia absolute top-0 tex-gray-500 right-0 p-3">
                         </i>
@@ -100,7 +100,7 @@
                             :inputType="'text'"
                             :model="weightPerPack"
                             @input="setWeightPerPack($event)"
-                            :disabled="flase"
+                            :disabled="false"
                             />
                         <i class="fas fa-globe-asia absolute top-0 tex-gray-500 right-0 p-3">                         
                         </i>
@@ -112,7 +112,7 @@
                             :inputType="'text'"
                             :model="weightBeforeRoast"
                             @input="setWeightBeforeRoast($event)"
-                            :disabled="flase"
+                            :disabled="false"
                             />
                         <i class="fas fa-globe-asia absolute top-0 tex-gray-500 right-0 p-3">                         
                         </i>
@@ -124,7 +124,7 @@
                             :inputType="'text'"
                             :model="weightAfterRoast"
                             @input="setWeightAfterRoast($event)"
-                            :disabled="flase"
+                            :disabled="false"
                             />
                         <i class="fas fa-globe-asia absolute top-0 tex-gray-500 right-0 p-3">                         
                         </i>
@@ -136,7 +136,7 @@
                             :inputType="'text'"
                             :model="profile"
                             @input="setProfile($event)"
-                            :disabled="flase"
+                            :disabled="false"
                             />
                         <i class="fas fa-globe-asia absolute top-0 tex-gray-500 right-0 p-3">                         
                         </i>
@@ -159,7 +159,7 @@
                             w-full
                             "
                             type="button"
-                            @click="createProduct"
+                            @click="createProduct(user)"
                             >
                             New Product
                         </button>    
@@ -184,7 +184,8 @@
         },
         computed:{
             ...mapState({
-                bean: state = state.product.bean,
+                user : state => state.auth.user,
+                bean: state => state.product.bean,
                 roastLevel: state => state.product.roastLevel,
                 roastLevelList: state => state.product.roastLevelList,
                 weightPerPack: state => state.product.weightPerPack,

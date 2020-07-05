@@ -52,6 +52,7 @@
 <script>
 import Logo from '~/components/items/Logo.vue'
 import InputElement from "~/components/items/Input.vue";
+import { mapState, mapActions} from "vuex";
 
 export default {
   transition:{
@@ -71,48 +72,27 @@ export default {
       password: ""
     }
   },
+  computed:{
+    ...mapState({
+      isLoggedIn : state => state.auth.isLoggedIn,
+    })
+  },
   methods:{
     login: function(){
+      console.log('login')
+      console.log(this.email)
+      this.googleLogin({ email:this.email, password:this.password})
+    },
+    ...mapActions({
+      googleLogin: "auth/firebaseLogin"
+    })
+  },
+  mounted(){
+    if(this.isLoggedIn){
       this.$router.push("/dashboard")
     }
   }
 }
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
